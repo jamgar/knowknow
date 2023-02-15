@@ -1,0 +1,62 @@
+<div class="max-w-sm mx-auto prose">
+  <h1 class="text-center">Sign Up</h1>
+
+  <%= form_with(model: @organization) do |form| %>
+    <% if @organization.errors.any? %>
+      <div class="">
+        <div>
+          <div>
+            <h2 class="">
+              <%= pluralize(@organization.errors.count, "error") %> prohibited this organization from being saved:
+            </h2>
+            <% @organization.errors.each do |error| %>
+              <p><%= error.full_message %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label "Organization Name (Needs to be unique)", class: "label" %>
+      <%= form.text_field :name, autofocus: true, class: "input input-bordered w-full bg-white" %>
+    </div>
+
+    <div class="field">
+      <%= form.label "Subdomain (Do not use spaces or special characters)", class: "label" %>
+      <%= form.text_field :subdomain, class: "input input-bordered w-full bg-white" %>
+    </div>
+
+    <%= form.fields_for :users do |f| %>
+
+      <div class="field">
+        <%= f.label :email, class: "label" %>
+        <%= f.email_field :email, autocomplete: "email", class: "input input-bordered w-full bg-white"  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: "label" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "input input-bordered w-full bg-white"  %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class: "label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered w-full bg-white"  %>
+      </div>
+    <% end %>
+
+    <div class="actions mt-4">
+      <%= form.submit "Sign up", class: "btn" %>
+    </div>
+  <% end %>
+
+  <div>
+   <%= link_to "Login", new_user_session_path %>
+  </div>
+</div>
+
+
+

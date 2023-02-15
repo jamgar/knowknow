@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
+  # get "sign_up", to: "organizations#new", as: :new_user_registration
+  get "sign_up", to: "organizations#new", as: :new_user_registration
+  devise_for :users, skip: [:registration, :session]
+  as :user do
+    get "sign_in", to: "devise/sessions#new", as: :new_user_session
+    post "sign_in", to: "devise/sessions#create", as: :user_session
+    delete "sign_out", to: "devise/sessions#destroy", as: :destroy_user_session
+    get "users/edit", to: "devise/registrations#edit", as: :edit_user_registration
+    put "users", to: "devise/registrations#update", as: :user_registration
+  end
+  
   root "pages#home"
+
+  # Public
+  resources :organizations, only: [:new, :create]
+
 end
