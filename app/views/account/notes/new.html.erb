@@ -1,0 +1,12 @@
+<div class="mx-auto max-w-4xl px-4">
+  <h1 class="text-4xl font-extrabold">New note</h1>
+
+  <%= render "form", note: @note %>
+
+  <br>
+
+  <div>
+    <%= link_to "Cancel", account_notes_path, class: "btn" %>
+  </div>
+</div>
+

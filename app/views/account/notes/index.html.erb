@@ -1,0 +1,29 @@
+<div class="mx-auto max-w-4xl px-4">
+  <div class="mb-4">
+    <h1 class="text-4xl font-extrabold">Notes</h1>
+    <%= link_to "+ New note", new_account_note_path, class: "btn my-2" %>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="table w-full">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @notes.each do |note| %>
+          <tr>
+            <td><%= link_to note.title, account_note_path(note), class: "link-primary" %></td>
+            <td><%= truncate((note.content.to_plain_text), length: 50) %></td>
+            <td><%= link_to "Edit", edit_account_note_path(note), class: "link-secondary" %></td>
+          </tr>
+        <% end %>
+      </body>
+    </table>
+  </div>
+</div>
+
+

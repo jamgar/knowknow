@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
@@ -40,6 +41,7 @@
           <li class="mt-2 mx-4 font-semibold"><%= current_user.email %></li>
           <div class="divider"></div>
           <!-- Sidebar content here -->
+          <li><%= link_to "Notes", account_notes_path %></li>
         </ul>
       </div>
     </div>

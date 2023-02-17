@@ -8,4 +8,5 @@ class User < ApplicationRecord
   enum :role, { standard: 0, manager: 1, admin: 2 }
 
   belongs_to :organization
+  has_many :notes
 end

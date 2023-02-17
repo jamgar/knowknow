@@ -1,0 +1,14 @@
+<div id="<%= dom_id @note %>">
+  <article class="prose max-w-4xl mx-auto px-4">
+   <h1 class="">
+    <%= @note.title %>
+   </h1> 
+   <div class="text-sm">
+     <p>Last updated: <%= @note.updated_at.strftime("%m/%d/%Y") %></p>
+   </div>
+   <section>
+      <%= @note.content %>
+    </section>
+  </article>
+</div>
+
