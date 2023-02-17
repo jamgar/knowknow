@@ -1,0 +1,20 @@
+<div id="<%= dom_id @document %>">
+  <article class="prose max-w-4xl mx-auto px-4">
+   <h1 class="">
+    <%= @document.title %>
+   </h1> 
+   <div class="text-sm">
+     <p>Updated: <%= @document.updated_at.strftime("%m/%d/%Y") %></p>
+   </div>
+   <% if @document.internal %>
+    <div class="badge badge-error badge-lg font-bold">
+      Internal Only 
+    </div>
+   <% end %>
+   <section>
+      <%= @document.content %>
+    </section>
+  </article>
+</div>
+
+

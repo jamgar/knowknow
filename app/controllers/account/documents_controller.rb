@@ -17,7 +17,7 @@ class Account::DocumentsController < AccountController
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to account_doucment_url(@document), notice: "Document was successfully created."}
+        format.html { redirect_to account_document_url(@document), notice: "Document was successfully created."}
       else
         format.html { render :new, status: :unprocessable_entity } 
       end
@@ -30,7 +30,7 @@ class Account::DocumentsController < AccountController
   def update
     respond_to do |format|
       if @document.update(document_params)
-        format.html { redirect_to account_doucment_url(@document), notice: "Document was successfully updated."}
+        format.html { redirect_to account_document_url(@document), notice: "Document was successfully updated."}
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -47,7 +47,7 @@ class Account::DocumentsController < AccountController
 
   private
     def document_params
-      params.require(:doucment).permit(:title, :content, :published, :internal)
+      params.require(:document).permit(:title, :content, :published, :internal)
     end
 
     def set_document

@@ -21,5 +21,6 @@ Rails.application.routes.draw do
 
   # Public
   resources :organizations, only: [:new, :create]
+  resources :documents, only: [:index, :show]
 
 end

@@ -1,0 +1,26 @@
+<header class="hero h-96 bg-base-200">
+  <div class="hero-content text-center">
+    <div class="max-w-lg">
+      <h1 class="text-4xl mb-6 font-semibold mr-auto"><%= current_tenant.name %> Knowledge Base</h1>
+    </div>
+  </div>
+</header>
+<section class="my-8 max-w-4xl mx-auto">
+  <div>
+    <%= turbo_frame_tag "documents" do %>
+      <% @documents.each do |document| %>
+        <div class="card w-full border-t-4 rounded-none bg-gray-50">
+          <div class="card-body">
+            <h2 class="card-title"><%= document.title %></h2>
+            <p><%= truncate((document.content.to_plain_text), length: 50) %></p>
+            <div class="card-actions justify-end">
+              <%= link_to "Read more →", document_path(document), class: "btn btn-ghost btn-sm" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+
+
