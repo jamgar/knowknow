@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   
   root "pages#home"
 
+  # Customer Account
+  namespace :account do
+    get "dashboard", to: "dashboard#index", as: :dashboard
+  end
+
   # Public
   resources :organizations, only: [:new, :create]
 
