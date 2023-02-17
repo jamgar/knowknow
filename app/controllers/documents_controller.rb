@@ -6,6 +6,9 @@ class DocumentsController < ApplicationController
       @documents = Document.order("updated_at DESC").where(published: true, internal: false)
     end
 
+    @documents = @documents.joins(:action_text_rich_text)
+      .where("action_text_rich_texts.body Like ?", "%#{params[:query]}%") if params[:query].present?
+
     @documents
   end
 

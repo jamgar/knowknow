@@ -2,6 +2,18 @@
   <div class="hero-content text-center">
     <div class="max-w-lg">
       <h1 class="text-4xl mb-6 font-semibold mr-auto"><%= current_tenant.name %> Knowledge Base</h1>
+      <div>
+        <%= form_with url: documents_path, method: :get, data: { controller: "search-form",
+                                                                 turbo_action: "advance",
+                                                                 turbo_frame: "documents" } do |form| %>
+          <%= form.text_field :query,
+            placeholder: "Search Knowledge Base", 
+            class: "input input-bordered w-full", 
+            autocomplete: "off", 
+            data: { action: "input->search-form#search" } 
+          %>
+        <% end %>
+      </div>
     </div>
   </div>
 </header>
