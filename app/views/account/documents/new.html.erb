@@ -1,0 +1,12 @@
+<div class="mx-auto max-w-4xl px-4">
+  <h1 class="text-4xl font-extrabold">New document</h1>
+
+  <%= render "form", document: @document %>
+
+  <br>
+
+  <div>
+    <%= link_to "Cancel", account_documents_path, class: "btn" %>
+  </div>
+</div>
+

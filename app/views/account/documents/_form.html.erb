@@ -1,0 +1,46 @@
+<%= form_with(model: [:account, document]) do |form| %>
+  <% if document.errors.any? %>
+    <div class="alert alert-error shadow-lg">
+      <div>
+        <div>
+          <h2 class="text-red-900">
+            <%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:
+          </h2>
+          <% document.errors.each do |error| %>
+            <p><%= error.full_message %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-control flex-row justify-end">
+    <%= form.label :published, class: "label cursor-pointer" do %>
+      <span class="pr-4">Publish</span> 
+      <%= form.check_box :published, class: "checkbox checkbox-primary"%>
+    <% end %>
+  </div>
+
+  <div class="form-control flex-row justify-end">
+    <%= form.label :internal, class: "label cursor-pointer" do %>
+      <span class="pr-4">Internal Only:</span> 
+      <%= form.check_box :internal, class: "checkbox checkbox-accent"%>
+    <% end %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :title, class: "label" %>
+    <%= form.text_field :title, class: "input input-bordered w-full bg-white" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :content, class: "label" %>
+    <%= form.rich_text_area :content, class: "trix-editor", data: { template_target: "textarea" } %>
+  </div>
+
+  <div class="mt-4">
+    <%= form.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+

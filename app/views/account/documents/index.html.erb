@@ -1,0 +1,28 @@
+<div class="mx-auto max-w-4xl px-4">
+  <div class="mb-4">
+    <h1 class="text-4xl font-extrabold">Documents</h1>
+    <%= link_to "+ New document", new_account_document_path, class: "btn my-2" %>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="table w-full">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @documents.each do |document| %>
+          <tr>
+            <td><%= link_to document.title, account_document_path(document), class: "link-primary" %></td>
+            <td><%= truncate((document.content.to_plain_text), length: 50) %></td>
+            <td><%= link_to "Edit", edit_account_document_path(document), class: "link-secondary" %></td>
+          </tr>
+        <% end %>
+      </body>
+    </table>
+  </div>
+</div>
+

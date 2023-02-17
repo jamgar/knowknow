@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :account do
     get "dashboard", to: "dashboard#index", as: :dashboard
     resources :notes
+    resources :documents
   end
 
   # Public
