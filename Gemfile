@@ -82,3 +82,5 @@ gem "devise", "~> 4.8"
 gem "acts_as_tenant", "~> 0.6.1"
 
 gem "friendly_id", "~> 5.5"
+
+gem "pagy", "~> 6.0"
