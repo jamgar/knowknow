@@ -1,0 +1,13 @@
+<div class="mx-auto max-w-4xl px-4">
+  <h1 class="text-4xl font-extrabold">Edit Template</h1>
+  
+  <%= render "form", saved_template: @saved_template %>
+
+  <br>
+
+  <div class="flex">
+    <%= link_to "Cancel", account_saved_templates_path, class: "btn mr-2" %>
+    <%= button_to "Delete", account_saved_template_path(@saved_template), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class: "btn btn-error" %>
+  </div>
+</div>
+

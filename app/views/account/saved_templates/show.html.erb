@@ -1,0 +1,19 @@
+<div class="m-4">
+  <%= link_to "← Back to Saved Template", account_saved_templates_path, class: "btn" %>
+</div>
+<div id="<%= dom_id @saved_template %>">
+  <article class="prose max-w-4xl mx-auto px-4">
+   <h1 class="">
+    <%= @saved_template.title %>
+   </h1> 
+   <div class="text-sm">
+     <p>Last updated: <%= @saved_template.updated_at.strftime("%m/%d/%Y") %></p>
+   </div>
+   <section>
+      <%= @saved_template.content %>
+    </section>
+  </article>
+</div>
+
+
+

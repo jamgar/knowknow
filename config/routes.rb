@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get "dashboard", to: "dashboard#index", as: :dashboard
     resources :notes
     resources :documents
+    resources :saved_templates
   end
 
   # Public

@@ -1,0 +1,32 @@
+<%= form_with(model: [:account, saved_template]) do |form| %>
+  <% if saved_template.errors.any? %>
+    <div class="alert alert-error shadow-lg">
+      <div>
+        <div>
+          <h2 class="text-red-900">
+            <%= pluralize(saved_template.errors.count, "error") %> prohibited this template from being saved:
+          </h2>
+          <% saved_template.errors.each do |error| %>
+            <p><%= error.full_message %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-control">
+    <%= form.label :title, class: "label" %>
+    <%= form.text_field :title, class: "input input-bordered w-full bg-white" %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :content, class: "label" %>
+    <%= form.rich_text_area :content, class: "trix-editor" %>
+  </div>
+
+  <div class="mt-4">
+    <%= form.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+

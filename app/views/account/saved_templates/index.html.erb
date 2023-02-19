@@ -1,0 +1,28 @@
+<div class="mx-auto max-w-4xl px-4">
+  <div class="mb-4">
+    <h1 class="text-4xl font-extrabold">Templates</h1>
+    <%= link_to "+ New Template", new_account_saved_template_path, class: "btn my-2" %>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="table w-full">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @saved_templates.each do |saved_template| %>
+          <tr>
+            <td><%= link_to saved_template.title, account_saved_template_path(saved_template), class: "link-primary" %></td>
+            <td><%= truncate((saved_template.content.to_plain_text), length: 50) %></td>
+            <td><%= link_to "Edit", edit_account_saved_template_path(saved_template), class: "link-secondary" %></td>
+          </tr>
+        <% end %>
+      </body>
+    </table>
+  </div>
+</div>
+

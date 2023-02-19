@@ -1,0 +1,12 @@
+<div class="mx-auto max-w-4xl px-4">
+  <h1 class="text-4xl font-extrabold">New Template</h1>
+
+  <%= render "form", saved_template: @saved_template %>
+
+  <br>
+
+  <div>
+    <%= link_to "Cancel", account_saved_templates_path, class: "btn" %>
+  </div>
+</div>
+

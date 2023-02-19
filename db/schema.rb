@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_17_171910) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_19_231519) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -78,6 +78,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_171910) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "saved_templates", force: :cascade do |t|
+    t.string "title"
+    t.integer "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_saved_templates_on_organization_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -98,5 +106,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_171910) do
   add_foreign_key "documents", "organizations"
   add_foreign_key "documents", "users"
   add_foreign_key "notes", "users"
+  add_foreign_key "saved_templates", "organizations"
   add_foreign_key "users", "organizations"
 end
