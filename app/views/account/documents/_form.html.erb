@@ -1,4 +1,4 @@
-<%= form_with(model: [:account, document]) do |form| %>
+<%= form_with(model: [:account, document], data: { controller: "template" }) do |form| %>
   <% if document.errors.any? %>
     <div class="alert alert-error shadow-lg">
       <div>
@@ -31,6 +31,14 @@
   <div class="form-control">
     <%= form.label :title, class: "label" %>
     <%= form.text_field :title, class: "input input-bordered w-full bg-white" %>
+  </div>
+
+  <div class="form-control mt-4">
+    <%= select_tag "Templates",
+        options_for_select(SavedTemplate.all.map { |t| [t.title, t.content] }),
+        prompt: "Select Template",
+        class: "select select-bordered max-w-xs",
+        data: { action: "change->template#insert", template_target: "template" } %>  
   </div>
 
   <div class="form-control">
