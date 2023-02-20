@@ -1,0 +1,46 @@
+<div class="max-w-sm mx-auto prose">
+  <h1 class="text-center">Edit <%= @organization.name %></h1>
+
+  <%= form_with(model: [:account, @organization]) do |form| %>
+    <% if @organization.errors.any? %>
+      <div class="">
+        <div>
+          <div>
+            <h2 class="">
+              <%= pluralize(@organization.errors.count, "error") %> prohibited this organization from being saved:
+            </h2>
+            <% @organization.errors.each do |error| %>
+              <p><%= error.full_message %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :heading, class: "label" %>
+      <%= form.text_field :heading, autofocus: true, class: "input input-bordered w-full bg-white" %>
+    </div>
+    
+    <div class="field">
+      <%= form.label :sub_heading, class: "label" %>
+      <%= form.text_field :sub_heading, class: "input input-bordered w-full bg-white" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :background_color, class: "label" %>
+      <%= form.color_field :background_color, class: "input input-bordered w-full bg-white" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :text_color, class: "label" %>
+      <%= form.color_field :text_color, class: "input input-bordered w-full bg-white" %>
+    </div>
+
+    <div class="actions mt-4">
+      <%= form.submit "Update", class: "btn" %>
+    </div>
+  <% end %>
+</div>
+
+

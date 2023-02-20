@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :notes
     resources :documents
     resources :saved_templates
+    resources :organizations, only: [:edit, :update]
   end
 
   # Public

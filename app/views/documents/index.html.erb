@@ -1,7 +1,8 @@
-<header class="hero h-96 bg-base-200">
+<header class="hero h-96 bg-base-200" style="background-color:<%= bg_color %>; color:<%= tx_color %>;">
   <div class="hero-content text-center">
     <div class="max-w-lg">
-      <h1 class="text-4xl mb-6 font-semibold mr-auto"><%= current_tenant.name %> Knowledge Base</h1>
+      <h1 class="text-4xl mb-6 font-semibold mr-auto"><%= current_tenant.heading %></h1>
+      <h4 class="text-xl mb-6 font-semibold mr-auto"><%= current_tenant.sub_heading %></h4>
       <div>
         <%= form_with url: documents_path, method: :get, data: { controller: "search-form",
                                                                  turbo_action: "advance",
