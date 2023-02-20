@@ -68,6 +68,8 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem "sqlite3", "~> 1.4"
+
+  gem "letter_opener", "~> 1.8"
 end
 
 group :test do
@@ -84,3 +86,6 @@ gem "acts_as_tenant", "~> 0.6.1"
 gem "friendly_id", "~> 5.5"
 
 gem "pagy", "~> 6.0"
+
+gem "devise_invitable", "~> 2.0"
+

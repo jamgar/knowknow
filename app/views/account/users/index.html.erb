@@ -1,0 +1,33 @@
+<div class="mx-auto max-w-4xl px-4">
+  <div class="mb-4">
+    <h1 class="text-4xl font-extrabold">Users</h1>
+    <%= link_to "Invite User", new_user_invitation_path(organization_id: ActsAsTenant.current_tenant), class: "btn my-2" %>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="table w-full">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Invite Accepted</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
+            <td><%= user.invitation_accepted? ? "<span class='badge badge-success'>Yes</span>".html_safe : "<span class='badge badge-accent'>No</span>".html_safe %></td>
+            <td>
+              <% if user.created_by_invite? && !user.invitation_accepted? %>
+                <%= link_to 'Resend Invite ↻', resend_invitation_account_user_path(user), data: { turbo_method: :patch }, class: "btn btn-xs" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </body>
+    </table>
+  </div>
+</div>
+
+

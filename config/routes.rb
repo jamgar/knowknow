@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     resources :documents
     resources :saved_templates
     resources :organizations, only: [:edit, :update]
+    resources :users, only: [:index] do
+      member do
+        patch :resend_invitation
+      end
+    end
   end
 
   # Public
