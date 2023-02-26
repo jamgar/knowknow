@@ -1,5 +1,8 @@
 class Account::OrganizationsController < AccountController
   before_action :set_organization
+  
+  def show
+  end
 
   def edit
   end

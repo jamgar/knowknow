@@ -10,7 +10,8 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       if @organization.save
         user = @organization.users.last
-        user.update(role: 1)
+        api_key = JsonWebToken.encode({api_key: @organization.id})
+        user.update(role: 1, api_key: api_key)
         sign_in(user)
         format.html { redirect_to root_path, notice: "Successfully signed in."}
       else
