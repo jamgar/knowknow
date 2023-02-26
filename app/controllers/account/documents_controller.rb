@@ -3,6 +3,7 @@ class Account::DocumentsController < AccountController
 
   def index
     @documents = current_user.documents.all
+    authorize @documents
   end
 
   def show
@@ -10,10 +11,12 @@ class Account::DocumentsController < AccountController
 
   def new
     @document = Document.new
+    authorize @document
   end
 
   def create
     @document = current_user.documents.new(document_params)
+    authorize @document
 
     respond_to do |format|
       if @document.save
@@ -52,6 +55,7 @@ class Account::DocumentsController < AccountController
 
     def set_document
       @document = Document.friendly.find(params[:id])
+      authorize @document
     end
 end
 

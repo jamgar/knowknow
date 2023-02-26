@@ -44,8 +44,10 @@
           <li><%= link_to "Notes", account_notes_path %></li>
           <li><%= link_to "Documents", account_documents_path %></li>
           <li><%= link_to "Templates", account_saved_templates_path %></li>
-          <li><%= link_to "Theme", edit_account_organization_path(current_tenant.id) %></li>
-          <li><%= link_to "Users", account_users_path %></li>
+          <% if policy(:user).index? %>
+            <li><%= link_to "Theme", edit_account_organization_path(current_tenant.id) %></li>
+            <li><%= link_to "Users", account_users_path %></li>
+          <% end %>
         </ul>
       </div>
     </div>
