@@ -10,10 +10,13 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       if @organization.save
         user = @organization.users.last
+        user.update(role: 1)
+
         api_key = JsonWebToken.encode({api_key: @organization.id})
-        user.update(role: 1, api_key: api_key)
+        @organization.update(api_key: api_key)
         sign_in(user)
-        format.html { redirect_to root_path, notice: "Successfully signed in."}
+
+        format.html { redirect_to account_dashboard_path, notice: "Successfully signed in."}
       else
         format.html { render :new, status: :unprocessable_entity }
       end
