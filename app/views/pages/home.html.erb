@@ -1,1 +1,10 @@
-<h1>Home Page</h1>
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <%= image_tag "hero.png", class: "max-w-sm rounded-lg shadow-2xl" %>
+    <div>
+      <h1 class="text-5xl font-bold">KnowKnow</h1>
+      <p class="py-6">Share knowledge in one place for your customers and employees.</p>
+      <%= link_to "Get Started", new_user_registration_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
